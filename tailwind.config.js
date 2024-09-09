@@ -17,6 +17,7 @@ module.exports = {
       dark: '#1D2144',
       primary: '#8B5CF6',
       test: '#ADD8E6',
+      varkgreen: '#62a97a',
       'body-color': '#9699A6',
       'gradient-1': '#E4F2FE',
       'gradient-2': '#FFEEFE',

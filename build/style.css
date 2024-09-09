@@ -859,8 +859,14 @@ video {
 .mb-16 {
   margin-bottom: 4rem;
 }
-.mr-9 {
-  margin-right: 2.25rem;
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.-mt-\[10rem\] {
+  margin-top: -10rem;
+}
+.-mr-\[7rem\] {
+  margin-right: -7rem;
 }
 .mb-\[70px\] {
   margin-bottom: 70px;
@@ -870,9 +876,6 @@ video {
 }
 .-ml-3 {
   margin-left: -0.75rem;
-}
-.mb-4 {
-  margin-bottom: 1rem;
 }
 .mb-7 {
   margin-bottom: 1.75rem;
@@ -976,6 +979,9 @@ video {
 .w-4 {
   width: 1rem;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .w-\[38px\] {
   width: 38px;
 }
@@ -1045,6 +1051,9 @@ video {
 .list-disc {
   list-style-type: disc;
 }
+.flex-col {
+  flex-direction: column;
+}
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -1062,6 +1071,9 @@ video {
 }
 .justify-between {
   justify-content: space-between;
+}
+.justify-items-start {
+  justify-items: start;
 }
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
@@ -1292,10 +1304,6 @@ video {
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -1320,6 +1328,10 @@ video {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 .pr-16 {
   padding-right: 4rem;
 }
@@ -1331,6 +1343,9 @@ video {
 }
 .pt-10 {
   padding-top: 2.5rem;
+}
+.pt-4 {
+  padding-top: 1rem;
 }
 .pl-6 {
   padding-left: 1.5rem;
@@ -1804,6 +1819,22 @@ video {
     }
   }
 
+  .md\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .md\:mr-9 {
+    margin-right: 2.25rem;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
   }
@@ -1840,6 +1871,14 @@ video {
     width: 2.5rem;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
   .md\:rounded-\[20px\] {
     border-radius: 20px;
   }
@@ -1850,6 +1889,11 @@ video {
 
   .md\:p-10 {
     padding: 2.5rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:px-16 {
