@@ -19,10 +19,21 @@
     <!-- ===== Header start ===== -->
     <header
       x-data="
-        {
-          navbarOpen: false,
-          dropdownOpen: false
+      {
+        navbarOpen: false,
+        scrolledFromTop: false,
+        init() {
+          window.addEventListener('scroll', () => {
+            this.scrolledFromTop = window.pageYOffset > 50
+          })
+        },
+        toggleNavbar() {
+          this.navbarOpen = !this.navbarOpen
+        },
+        closeNavbar() {
+          this.navbarOpen = false
         }
+      }
       "
       :class="scrolledFromTop ? 'bg-white dark:bg-dark bg-opacity-80 dark:bg-opacity-80 shadow-sticky backdrop-blur-sm' : 'bg-white dark:bg-dark' "
       class="w-full flex items-center sticky top-0 z-50 wow fadeInUp"
@@ -80,6 +91,7 @@
                   <li>
                     <a
                       href="#features"
+                      @click="closeNavbar"
                       :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
                       class="scroll-menu text-base font-medium text-body-color hover:text-primary lg:inline-flex flex lg:ml-8 xl:ml-12"
                     >
@@ -89,6 +101,7 @@
                   <li>
                     <a
                       href="#about"
+                      @click="closeNavbar"
                       :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
                       class="scroll-menu text-base font-medium text-body-color hover:text-primary lg:inline-flex flex lg:ml-8 xl:ml-12"
                     >
@@ -98,24 +111,17 @@
                   <li>
                     <a
                       href="#pricing"
+                      @click="closeNavbar"
                       :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
                       class="scroll-menu text-base font-medium text-body-color hover:text-primary lg:inline-flex flex lg:ml-8 xl:ml-12"
                     >
                       Pricing
                     </a>
                   </li>
-                  <!-- <li>
-                    <a
-                      href="#testimonial"
-                      :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
-                      class="scroll-menu text-base font-medium text-body-color hover:text-primary lg:inline-flex flex lg:ml-8 xl:ml-12"
-                    >
-                      Reviews
-                    </a>
-                  </li> -->
                   <li>
                     <a
                       href="#contact"
+                      @click="closeNavbar"
                       :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
                       class="scroll-menu text-base font-medium text-body-color hover:text-primary lg:inline-flex flex lg:ml-8 xl:ml-12"
                     >
@@ -125,39 +131,12 @@
                   <li class="pt-4 block md:hidden">
                     <a
                       href="https://calendly.com/marc-gulliver100" target="_blank"
+                      @click="closeNavbar"
                       class="flex items-center justify-center text-base font-medium text-white bg-primary rounded-lg py-3 px-7 shadow-xl transition-all hover:bg-varkgreen"
                     >
                       Book a Demo
                     </a>
                   </li>
-                  <!-- <li class="relative group submenu-item">
-                    <a
-                      href="javascript:void(0)"
-                      @click="dropdownOpen = !dropdownOpen"
-                      :class="scrolledFromTop ? 'py-2 lg:py-6' : 'py-2 lg:py-8' "
-                      class="text-base text-body-color group-hover:text-primary lg:inline-flex lg:pl-0 lg:pr-4 flex lg:ml-10 xl:ml-12 relative after:absolute after:w-2 after:h-2 after:border-b-2 after:border-r-2 after:border-current after:rotate-45 lg:after:right-0 after:right-1 after:top-1/2 after:translate-y-[-50%] after:mt-[-2px]"
-                    >
-                      Pages
-                    </a>
-                    <div
-                      :class="dropdownOpen ? 'block' : 'hidden lg:block ' "
-                      class="submenu relative lg:absolute lg:w-[250px] top-full lg:top-[115%] left-0 rounded-lg lg:shadow-lg lg:p-4 lg:opacity-0 lg:invisible group-hover:opacity-100 lg:group-hover:visible lg:group-hover:top-full bg-white dark:bg-black transition-[top] duration-300"
-                    >
-                      <a
-                        href="blog-grid.html"
-                        class="block text-sm text-black dark:text-white dark:hover:text-primary rounded hover:text-primary py-[10px] lg:px-4"
-                      >
-                        Blog Grid Page
-                      </a>
-
-                      <a
-                        href="blog-details.html"
-                        class="block text-sm text-black dark:text-white dark:hover:text-primary rounded hover:text-primary py-[10px] lg:px-4"
-                      >
-                        Blog Details Page
-                      </a>
-                    </div>
-                  </li> -->
                 </ul>
               </nav>
             </div>
@@ -220,6 +199,7 @@
         </div>
       </div>
     </header>
+  
     <!-- ===== Header end ===== -->
 
     <!-- ===== Hero Start ===== -->
@@ -272,17 +252,60 @@
               <h2
                 class="font-extrabold text-3xl sm:text-4xl text-black dark:text-white mb-5"
               >
-                Our Recent Awards
+                Features
               </h2>
               <p class="font-semibold text-base text-body-color">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                By simply enpowering your recruitment business to identify missed placement revenue,
+                AardvarkGo provides you a clear view on any operational weaknesses.
               </p>
             </div>
           </div>
         </div>
 
         <div class="flex flex-wrap -mx-4">
+          <div class="w-full md:w-1/2 xl:w-1/3 px-4">
+            <div
+              class="bg-white dark:bg-black p-10 sm:p-12 md:p-10 lg:p-12 xl:p-10 2xl:p-12 rounded-[20px] shadow-award mb-8 wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <div class="flex items-center mb-6 w-40 max-w-full -ml-[1rem] -mt-[2rem]">
+                <img src="src/images/logo/aardvark-logo.svg" alt="logo" />
+              </div>
+
+              <div class="flex items-center mb-5">
+                <h3
+                  class="font-bold text-xl text-black dark:text-white"
+                >
+                  AardvarkGo is the best solution for your revenue protection.
+                </h3>
+              </div>
+
+              <p class="text-base text-body-color mb-9">
+                Our goal is to equip you with the data and insights you need to not just recover missed fees, 
+                but to elevate your entire recruitment operation to new heights of efficiency and success.
+              </p>
+
+              <a
+                href="https://calendly.com/marc-gulliver100"
+                class="inline-flex items-center font-bold text-base text-primary hover:underline"
+              >
+                Book a demo
+
+                <span class="pl-2">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 28 28"
+                    class="fill-current"
+                  >
+                    <path
+                      d="M16.3333 19.7633V15.0967H5.92666L5.89166 12.7517H16.3333V8.09668L22.1667 13.93L16.3333 19.7633Z"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
           <div class="w-full md:w-1/2 xl:w-1/3 px-4">
             <div
               class="bg-white dark:bg-black p-10 sm:p-12 md:p-10 lg:p-12 xl:p-10 2xl:p-12 rounded-[20px] shadow-award mb-8 wow fadeInUp"
@@ -307,24 +330,32 @@
                 <span
                   class="font-bold text-lg text-black dark:text-white"
                 >
-                  4.9 Rating
+                  Process Optimisation
                 </span>
               </div>
 
-              <div class="flex items-center mb-8">
+              <div class="flex items-center mb-5">
+                <h3
+                  class="font-bold text-xl text-black dark:text-white"
+                >
+                  Build a bullet proof process for maximum revenue generation
+                </h3>
+              </div>
+
+              <!-- <div class="flex items-center mb-8">
                 <div class="flex items-center">
                   <img
-                    src="src/images/award/person-1.png"
+                    src="images/award/person-1.png"
                     alt="image"
                     class="w-[38px] h-[38px] border-2 border-white rounded-full"
                   />
                   <img
-                    src="src/images/award/person-2.png"
+                    src="images/award/person-2.png"
                     alt="image"
                     class="w-[38px] h-[38px] border-2 border-white rounded-full -ml-3"
                   />
                   <img
-                    src="src/images/award/person-3.png"
+                    src="images/award/person-3.png"
                     alt="image"
                     class="w-[38px] h-[38px] border-2 border-white rounded-full -ml-3"
                   />
@@ -334,18 +365,20 @@
                 >
                   +195K raters
                 </span>
-              </div>
+              </div> -->
 
               <p class="text-base text-body-color mb-9">
-                Lorem ipsum dolor sit amet, consec adipiscing elit In vulputate
-                vitae massa eu dapibus ligula.
+                By highlighting patterns in candidate placements and missed revenue, we help you identify and strengthen 
+                weak spots in your recruitment processes.
+                Discover areas where your internal processes may be falling short, allowing you to 
+                implement targeted improvements.
               </p>
 
               <a
-                href="javascript:void(0)"
+                href="https://calendly.com/marc-gulliver100"
                 class="inline-flex items-center font-bold text-base text-primary hover:underline"
               >
-                Rate Out Application
+                Book a demo
 
                 <span class="pl-2">
                   <svg
@@ -386,7 +419,7 @@
                 <span
                   class="font-bold text-lg text-black dark:text-white"
                 >
-                  Awwwards
+                Client Relationships
                 </span>
               </div>
 
@@ -394,65 +427,22 @@
                 <h3
                   class="font-bold text-xl text-black dark:text-white"
                 >
-                  Best of trendy design in
-                  <span class="font-bold text-primary"> 2024 </span>
-                  on Awwwards
+                  Get the best out of your client relationships
                 </h3>
               </div>
 
               <p class="text-base text-body-color mb-9">
-                Lorem ipsum dolor sit amet, consec adipiscing elit In vulputate
-                vitae massa eu dapibus ligula.
+                Our insights can inform more strategic discussions with clients, potentially leading 
+                to improved terms of business and client prioritisation.
+                Being able to understand which of your clients work fairly and collabratively, enables you to 
+                achieve more consistent revenue. 
               </p>
 
               <a
-                href="javascript:void(0)"
+                href="https://calendly.com/marc-gulliver100"
                 class="inline-flex items-center font-bold text-base text-primary hover:underline"
               >
-                Go to Awards
-
-                <span class="pl-2">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 28 28"
-                    class="fill-current"
-                  >
-                    <path
-                      d="M16.3333 19.7633V15.0967H5.92666L5.89166 12.7517H16.3333V8.09668L22.1667 13.93L16.3333 19.7633Z"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 xl:w-1/3 px-4">
-            <div
-              class="bg-white dark:bg-black p-10 sm:p-12 md:p-10 lg:p-12 xl:p-10 2xl:p-12 rounded-[20px] shadow-award mb-8 wow fadeInUp"
-              data-wow-delay=".3s"
-            >
-              <div class="flex items-center mb-6">
-                <img src="src/images/logo/logo.svg" alt="logo" />
-              </div>
-
-              <div class="flex items-center mb-5">
-                <h3
-                  class="font-bold text-xl text-black dark:text-white"
-                >
-                  Appwind is the best app for online payments.
-                </h3>
-              </div>
-
-              <p class="text-base text-body-color mb-9">
-                Lorem ipsum dolor sit amet, consec adipiscing elit In vulputate
-                vitae massa eu dapibus ligula.
-              </p>
-
-              <a
-                href="javascript:void(0)"
-                class="inline-flex items-center font-bold text-base text-primary hover:underline"
-              >
-                Know More
+                Book a demo
 
                 <span class="pl-2">
                   <svg
@@ -484,7 +474,7 @@
               data-wow-delay=".2s"
             >
               <img
-                src="src/images/about/about-image-1.svg"
+                src="src/images/spots.svg"
                 alt="image"
                 class="max-full"
               />
@@ -498,25 +488,25 @@
               <span
                 class="font-bold text-base text-primary block mb-2"
               >
-                About Application
+                About AardvarkGo
               </span>
               <h2
                 class="font-extrabold text-3xl sm:text-4xl leading-tight text-black dark:text-white mb-6"
               >
-                Instant Payment Transfer SavesYou Time
+                Recruitment technology born from experience.
               </h2>
               <p
                 class="text-lg leading-relaxed text-body-color mb-12 lg:mb-16"
               >
-                Schedule your posts for times when your audience is most active.
-                Choose from our best-time predictions, or create your own
-                publishing schedule.
+              At AardvarkGo, we understand the recruitment industry inside and out. Our software was born 
+              from the collective experience of seasoned recruiters who recognised a critical gap in the market 
+              and set out to fill it.
               </p>
               <a
-                href="javascript:void(0)"
+                href="https://calendly.com/marc-gulliver100"
                 class="inline-flex items-center font-bold text-base text-primary hover:underline"
               >
-                Know More About App
+                Book a demo
 
                 <span class="pl-2">
                   <svg
@@ -548,7 +538,7 @@
               data-wow-delay=".2s"
             >
               <img
-                src="src/images/about/about-image-2.svg"
+                src="src/images/spots.svg"
                 alt="image"
                 class="max-full"
               />
@@ -559,25 +549,88 @@
               <span
                 class="font-bold text-base text-primary block mb-2"
               >
-                Easy to Manage Appwind
+                Our roots
               </span>
               <h2
                 class="font-extrabold text-3xl sm:text-4xl leading-tight text-black dark:text-white mb-6"
               >
-                Manage your online wallet with Appwind.
+                The industry knowledge behind the software.
               </h2>
               <p
                 class="text-lg leading-relaxed text-body-color mb-12 lg:mb-16"
               >
-                Schedule your posts for times when your audience is most active.
-                Choose from our best-time predictions, or create your own
-                publishing schedule.
+              AardvarkGo was created by recruiters, for recruiters. Our founding team brings decades of 
+              experience from the front lines of agency recruitment. This deep industry knowledge has been 
+              the cornerstone of our approach, ensuring that every feature and function of AardvarkGo is tailored 
+              to address the real-world challenges faced by recruitment professionals.
               </p>
               <a
-                href="javascript:void(0)"
+                href="https://calendly.com/marc-gulliver100"
                 class="inline-flex items-center font-bold text-base text-primary hover:underline"
               >
-                Get the App Now!
+                Book a demo
+
+                <span class="pl-2">
+                  <svg
+                    width="28"
+                    height="28"
+                    viewBox="0 0 28 28"
+                    class="fill-current"
+                  >
+                    <path
+                      d="M16.3333 19.7633V15.0967H5.92666L5.89166 12.7517H16.3333V8.09668L22.1667 13.93L16.3333 19.7633Z"
+                    />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== About end ===== -->
+
+    <!-- ===== About start ===== -->
+    <section class="pt-14">
+      <div class="container">
+        <div class="flex flex-wrap items-center -mx-4">
+          <div class="w-full lg:w-1/2 px-4">
+            <div
+              class="text-center mb-14 lg:mb-0 wow fadeInUp"
+              data-wow-delay=".2s"
+            >
+              <img
+                src="src/images/spots.svg"
+                alt="image"
+                class="max-full"
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2 px-4">
+            <div class="max-w-[485px] wow fadeInUp lg:ml-auto" data-wow-delay=".3s">
+              <span
+                class="font-bold text-base text-primary block mb-2"
+              >
+              Tech Meets Recruitment Expertise
+              </span>
+              <h2
+                class="font-extrabold text-3xl sm:text-4xl leading-tight text-black dark:text-white mb-6"
+              >
+                The skillsets that make the difference.
+              </h2>
+              <p
+                class="text-lg leading-relaxed text-body-color mb-12 lg:mb-16"
+              >
+              What sets us apart is our unique blend of recruitment and technical expertise. Our internal development 
+              team consists of professionals who have walked in your shoes - they've worked in agency recruitment before 
+              transitioning to software development. This dual perspective allows us to create solutions that are not 
+              just technically sound, but also intuitively aligned with the needs of recruiters.
+              </p>
+              <a
+                href="https://calendly.com/marc-gulliver100"
+                class="inline-flex items-center font-bold text-base text-primary hover:underline"
+              >
+                Book a demo
 
                 <span class="pl-2">
                   <svg
@@ -614,8 +667,8 @@
                 How it Works?
               </h2>
               <p class="font-semibold text-base text-body-color">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                We've set out below an easy to understand three step process of using AardvarkGo, as easy as
+                it sounds there's a lot more technical wizardry going on behind the scenes.
               </p>
             </div>
           </div>
@@ -644,11 +697,11 @@
               <h3
                 class="font-bold text-xl sm:text-2xl md:text-xl lg:text-2xl text-black dark:text-white mb-4"
               >
-                Download for Free
+                Upload your csv
               </h3>
               <p class="font-semibold text-base text-body-color">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit lectus
-                non ipsum.
+                Send us your monthly cv send data, including candidate name, which client the cv has been sent to, and
+                the canidate LinkedIn url.
               </p>
             </div>
           </div>
@@ -674,11 +727,11 @@
               <h3
                 class="font-bold text-xl sm:text-2xl md:text-xl lg:text-2xl text-black dark:text-white mb-4"
               >
-                Open an Account
+                Sniff out missed fees.
               </h3>
               <p class="font-semibold text-base text-body-color">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit lectus
-                non ipsum.
+                This process will check if any of your candidates are working
+                at companies that you've held candiadte ownership for or represented.
               </p>
             </div>
           </div>
@@ -704,11 +757,11 @@
               <h3
                 class="font-bold text-xl sm:text-2xl md:text-xl lg:text-2xl text-black dark:text-white mb-4"
               >
-                Enjoy our App
+                Get your results
               </h3>
               <p class="font-semibold text-base text-body-color">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit lectus
-                non ipsum.
+                Once you've recieved your results, you can use that data to claw back missed revenue, or
+                simply to optimise your business processes.
               </p>
             </div>
           </div>
@@ -721,7 +774,7 @@
     <section id="cta" class="pt-14">
       <div class="container">
         <div
-          class="bg-gradient-to-l from-gradient-1 to-gradient-2 dark:from-[#3c3e56] dark:to-black rounded-[20px] px-7 sm:px-10 md:px-16 lg:px-14 xl:px-16 wow fadeInUp"
+          class="z-40 relative overflow-hidden bg-gradient-to-l from-gradient-1 to-gradient-2 dark:from-[#3c3e56] dark:to-black rounded-[20px] px-7 sm:px-10 md:px-16 lg:px-14 xl:px-16 wow fadeInUp"
           data-wow-delay=".2s"
         >
           <div class="flex flex-wrap items-end -mx-4">
@@ -730,98 +783,39 @@
                 <span
                   class="font-bold text-base text-primary block mb-2"
                 >
-                  Download Now!
+                  Book A Demo Now!
                 </span>
                 <h2
                   class="font-extrabold text-3xl sm:text-4xl leading-tight text-black dark:text-white mb-7"
                 >
-                  Download our mobile application.
+                  Simply book a time slot that's convenient for you.
                 </h2>
                 <p
                   class="font-bold text-base leading-relaxed text-body-color mb-10"
                 >
-                  Download Appwind mobile banking app for IOS & Android to
-                  manage your online money.
+                  The button below will direct you to our Calendly integration where you can book a demo time slot with 
+                  one of our Aardventerous team members.
                 </p>
                 <div class="flex items-center">
                   <a
-                    href="javascript:void(0)"
-                    class="flex items-center bg-primary rounded-xl py-3 px-3 sm:px-4 transition-all hover:shadow-primary-hover mr-2 sm:mr-5"
+                    href="https://calendly.com/marc-gulliver100"
+                    class="flex items-center bg-primary rounded-xl py-3 px-3 sm:px-4 transition-all hover:bg-varkgreen mr-2 sm:mr-5"
                   >
-                    <span class="pr-3">
-                      <svg
-                        width="34"
-                        height="34"
-                        viewBox="0 0 34 34"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M4 28.9958V4.9125C4 4.07667 4.48167 3.34 5.19 3L19.1442 16.9542L5.19 30.9083C4.48167 30.5542 4 29.8317 4 28.9958ZM23.5642 21.3742L8.32083 30.1858L20.3483 18.1583L23.5642 21.3742ZM28.31 15.2683C28.7917 15.6508 29.1458 16.2458 29.1458 16.9542C29.1458 17.6625 28.8342 18.2292 28.3383 18.6258L25.0942 20.4958L21.5525 16.9542L25.0942 13.4125L28.31 15.2683ZM8.32083 3.7225L23.5642 12.5342L20.3483 15.75L8.32083 3.7225Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </span>
                     <span class="font-bold text-white text-lg">
-                      <span
-                        class="block text-xs text-white opacity-70"
-                      >
-                        Get it on
-                      </span>
-                      Google Play
-                    </span>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="flex items-center bg-black dark:bg-white rounded-xl py-3 px-3 sm:px-4 transition-all hover:shadow-black-hover"
-                  >
-                    <span class="pr-3 text-white dark:text-black">
-                      <svg
-                        width="34"
-                        height="34"
-                        viewBox="0 0 34 34"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M26.5058 27.625C25.33 29.3817 24.0833 31.0958 22.185 31.1242C20.2866 31.1667 19.6775 30.005 17.5241 30.005C15.3566 30.005 14.6908 31.0958 12.8916 31.1667C11.0358 31.2375 9.6333 29.2967 8.4433 27.5825C6.0208 24.0833 4.16497 17.6375 6.6583 13.3025C7.8908 11.1492 10.1008 9.78916 12.495 9.74666C14.3083 9.71833 16.0366 10.9792 17.1558 10.9792C18.2608 10.9792 20.3575 9.46333 22.5533 9.68999C23.4741 9.73249 26.0525 10.0583 27.71 12.495C27.5825 12.58 24.6358 14.3083 24.6641 17.8925C24.7066 22.1708 28.4183 23.6017 28.4608 23.6158C28.4183 23.715 27.8658 25.6558 26.5058 27.625ZM18.4166 4.95833C19.4508 3.78249 21.165 2.88999 22.5816 2.83333C22.7658 4.49083 22.1 6.16249 21.1083 7.35249C20.1308 8.55666 18.5158 9.49166 16.9291 9.36416C16.7166 7.73499 17.51 6.03499 18.4166 4.95833Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="font-bold text-white dark:text-black text-lg"
-                    >
-                      <span
-                        class="block text-xs text-white dark:text-black opacity-70 dark:opacity-70"
-                      >
-                        Download from
-                      </span>
-                      App Store
+                      Book A Demo
                     </span>
                   </a>
                 </div>
               </div>
             </div>
-            <div class="w-full lg:w-1/2 px-4">
-              <div
-                class="relative w-full flex justify-end items-end"
-              >
-                <div class="w-full">
+            <div class="w-full px-4 -z-1 -mr-[40rem] md:-mt-[30rem] md:-mr-[38rem] lg:-mt-[25rem] lg:-mr-[50rem]">
+                <div class="relative w-full h-full">
                   <img
-                    src="src/images/cta/cta-image-1.svg"
+                    src="src/images/spots.svg"
                     alt="image"
                     class="relative z-10 drop-shadow-image"
                   />
                 </div>
-                <div class="w-full -ml-8">
-                  <img
-                    src="src/images/cta/cta-image-2.svg"
-                    alt="image"
-                    class="relative z-0 drop-shadow-image"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -844,8 +838,7 @@
                 Flexible Plans
               </h2>
               <p class="font-semibold text-base text-body-color">
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
+                Choose a monthly plan that best suits your business.
               </p>
             </div>
           </div>
@@ -854,7 +847,7 @@
         <div class="flex flex-wrap -mx-4">
           <div class="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="relative overflow-hidden py-10 px-8 sm:p-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-[#f3eeff] dark:border-black mb-12 wow fadeInUp"
+              class="shadow-xl relative overflow-hidden py-10 px-8 sm:p-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-[#f3eeff] dark:border-black mb-12 wow fadeInUp"
               data-wow-delay=".25s"
             >
               <span
@@ -865,7 +858,7 @@
               <h3
                 class="font-bold text-black dark:text-white text-[40px]"
               >
-                $35
+                £50
 
                 <span
                   class="font-normal text-base text-body-color dark:text-white"
@@ -878,10 +871,10 @@
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -890,15 +883,15 @@
                       />
                     </svg>
                   </span>
-                  Life time free updates!
+                  Up to 1,000 cv sends per month
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -907,15 +900,15 @@
                       />
                     </svg>
                   </span>
-                  Unlimited transactions
+                  Revenue protection checks
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -924,15 +917,15 @@
                       />
                     </svg>
                   </span>
-                  Free credit-card
+                  Monthly reports
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -941,20 +934,27 @@
                       />
                     </svg>
                   </span>
-                  1 year premium support
+                  Emails support
                 </p>
               </div>
               <div class="pt-11">
                 <a
-                  href="javascript:void(0)"
-                  class="bg-primary w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:shadow-primary-hover"
+                  href="https://calendly.com/marc-gulliver100"
+                  class="bg-primary shadow-xl w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:bg-varkgreen"
                 >
-                  Choose Basic Plan
+                  Book a Demo
                 </a>
               </div>
 
               <div>
-                <span class="absolute top-0 left-0 -z-1">
+                <div class="w-full h-full absolute -top-12 left-16 -z-1">
+                  <img
+                    src="src/images/spots.svg"
+                    alt="image"
+                    class="relative z-10 drop-shadow-image"
+                  />
+                </div>
+                <!-- <span class="absolute top-0 left-0 -z-1">
                   <svg
                     width="294"
                     height="190"
@@ -1015,8 +1015,8 @@
                       </linearGradient>
                     </defs>
                   </svg>
-                </span>
-                <span class="absolute top-0 right-32 -z-1">
+                </span> -->
+                <!-- <span class="absolute top-0 right-32 -z-1">
                   <svg
                     width="63"
                     height="30"
@@ -1123,13 +1123,13 @@
                       fill="#8B5CF6"
                     />
                   </svg>
-                </span>
+                </span> -->
               </div>
             </div>
           </div>
           <div class="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="relative overflow-hidden py-10 px-8 sm:p-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-primary mb-12 wow fadeInUp"
+              class="shadow-xl relative overflow-hidden py-10 px-8 sm:p-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-primary mb-12 wow fadeInUp"
               data-wow-delay=".3s"
             >
               <span
@@ -1140,7 +1140,7 @@
               <h3
                 class="font-bold text-black dark:text-white text-[40px]"
               >
-                $99
+                £70
 
                 <span
                   class="font-normal text-base text-body-color dark:text-white"
@@ -1153,10 +1153,10 @@
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1165,15 +1165,15 @@
                       />
                     </svg>
                   </span>
-                  Life time free updates!
+                  Up to 2,000 cv sends per month
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1182,15 +1182,15 @@
                       />
                     </svg>
                   </span>
-                  Unlimited transactions
+                  Revenue protection checks
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1199,15 +1199,15 @@
                       />
                     </svg>
                   </span>
-                  Free credit-card
+                  Monthly reports
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1216,20 +1216,27 @@
                       />
                     </svg>
                   </span>
-                  2 year premium support
+                  Email support
                 </p>
               </div>
               <div class="pt-11">
                 <a
-                  href="javascript:void(0)"
-                  class="bg-primary w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:shadow-primary-hover"
+                  href="https://calendly.com/marc-gulliver100"
+                  class="bg-primary shadow-xl w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:bg-varkgreen"
                 >
-                  Choose Popular Plan
+                  Book a Demo
                 </a>
               </div>
 
               <div>
-                <span class="absolute top-0 left-0 -z-1">
+                <div class="w-full h-full absolute -top-12 left-16 -z-1">
+                  <img
+                    src="src/images/spots.svg"
+                    alt="image"
+                    class="relative z-10 drop-shadow-image"
+                  />
+                </div>
+                <!-- <span class="absolute top-0 left-0 -z-1">
                   <svg
                     width="294"
                     height="190"
@@ -1398,24 +1405,24 @@
                       fill="#8B5CF6"
                     />
                   </svg>
-                </span>
+                </span> -->
               </div>
             </div>
           </div>
           <div class="w-full md:w-1/2 lg:w-1/3 px-4">
             <div
-              class="relative overflow-hidden py-10 px-8 sm:black-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-[#f3eeff] dark:border-body-color mb-12 wow fadeInUp"
+              class="shadow-xl relative overflow-hidden py-10 px-8 sm:p-12 md:px-8 lg:px-5 xl:px-9 2xl:px-12 rounded-[20px] border-2 border-[#f3eeff] dark:border-body-color mb-12 wow fadeInUp"
               data-wow-delay=".35s"
             >
               <span
                 class="font-bold text-xl text-black dark:text-white mb-2 block"
               >
-                Golden Plan
+                Gold Plan
               </span>
               <h3
                 class="font-bold text-black dark:text-white text-[40px]"
               >
-                $159
+                £120
 
                 <span
                   class="font-normal text-base text-body-color dark:text-white"
@@ -1428,10 +1435,10 @@
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1440,15 +1447,15 @@
                       />
                     </svg>
                   </span>
-                  Life time free updates!
+                  Over 2,000 cv sends per month
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1457,15 +1464,15 @@
                       />
                     </svg>
                   </span>
-                  Unlimited transactions
+                  Revenue protection checks
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1474,15 +1481,15 @@
                       />
                     </svg>
                   </span>
-                  Free credit-card
+                  Monthly reports
                 </p>
                 <p
                   class="flex items-center font-semibold text-base text-body-color"
                 >
-                  <span class="pr-3">
+                  <span class="pr-3 text-varkgreen">
                     <svg
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       viewBox="0 0 20 20"
                       class="fill-current"
                     >
@@ -1491,20 +1498,27 @@
                       />
                     </svg>
                   </span>
-                  Lifetime premium support
+                  Email support
                 </p>
               </div>
               <div class="pt-11">
                 <a
-                  href="javascript:void(0)"
-                  class="bg-primary w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:shadow-primary-hover"
+                  href="https://calendly.com/marc-gulliver100"
+                  class="bg-primary shadow-xl w-full flex items-center justify-center text-white text-base font-bold p-3 rounded-xl transition-all hover:bg-varkgreen"
                 >
-                  Choose Golden Plan
+                  Book a Demo
                 </a>
               </div>
 
               <div>
-                <span class="absolute top-0 left-0 -z-1">
+                <div class="w-full h-full absolute -top-12 left-16 -z-1">
+                  <img
+                    src="src/images/spots.svg"
+                    alt="image"
+                    class="relative z-10 drop-shadow-image"
+                  />
+                </div>
+                <!-- <span class="absolute top-0 left-0 -z-1">
                   <svg
                     width="294"
                     height="190"
@@ -1673,7 +1687,7 @@
                       fill="#8B5CF6"
                     />
                   </svg>
-                </span>
+                </span> -->
               </div>
             </div>
           </div>
@@ -2544,8 +2558,8 @@
                   Frequently Asked Questions
                 </h2>
                 <p class="font-semibold text-base text-body-color">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                  We've done our best to answer the most common questions we get asked. However, if you would like to speak
+                  to a member of our team please use our <a href="#contact" class="underline">contact</a> form.
                 </p>
               </div>
             </div>
@@ -2593,7 +2607,7 @@
                   </div>
                 </div>
   
-                <div class="absolute -z-1 -left-16 bottom-4">
+                <!-- <div class="absolute -z-1 -left-16 bottom-4">
                   <svg
                     width="170"
                     height="198"
@@ -2815,7 +2829,7 @@
                       </radialGradient>
                     </defs>
                   </svg>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="w-full lg:w-1/2 px-4">
@@ -2859,7 +2873,7 @@
                   </div>
                 </div>
   
-                <div class="absolute -z-1 -right-16 -top-12">
+                <!-- <div class="absolute -z-1 -right-16 -top-12">
                   <svg
                     width="170"
                     height="183"
@@ -3081,7 +3095,7 @@
                       </radialGradient>
                     </defs>
                   </svg>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -3396,7 +3410,7 @@
     <!-- ===== Brands end ===== -->
 
     <!-- ===== Contact start ===== -->
-    <section id="contact" class="py-[100px] overflow-hidden">
+    <section id="contact" class="py-[100px] overflow-hidden pb-[30rem]">
       <div class="container">
         <div class="flex justify-center -mx-4">
           <div class="w-full px-4">
@@ -3409,7 +3423,7 @@
               >
                 Need Any Help?
               </h2>
-              <p class="font-semibold text-base text-body-color">
+              <p class="font-semibold text-base text-body-color pb-8">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in some form.
               </p>
@@ -3418,11 +3432,11 @@
         </div>
 
         <div
-          class="max-w-[770px] mx-auto shadow-faq rounded-2xl relative bg-white dark:bg-dark z-10 wow fadeInUp"
+          class="max-w-[770px] mx-auto rounded-2xl relative bg-white dark:bg-dark z-10 wow fadeInUp shadow-xl"
           data-wow-delay=".3s"
         >
           <div
-            class="py-10 px-8 sm:p-[70px] bg-white dark:bg-black rounded-2xl border border-gradient-1 dark:border-dark"
+            class="relative z-40 py-10 px-8 sm:p-[70px] bg-white dark:bg-black rounded-2xl border border-gradient-1 dark:border-dark"
           >
             <form action="https://formbold.com/s/unique_form_id" method="POST">
               <div class="flex flex-wrap -mx-4">
@@ -3514,8 +3528,15 @@
             </form>
           </div>
           <div>
-            <span class="absolute bottom-8 -left-14 -z-1">
-              <svg
+            <span class="relative bottom-8 -left-14 -z-1">
+              <div class="h-[30rem] w-full -ml-[30rem] -mt-[20rem]">
+                <img
+                src="src/images/spots.svg"
+                alt="image"
+                class="max-full w-full h-full"
+              />
+              </div>
+              <!-- <svg
                 width="126"
                 height="156"
                 viewBox="0 0 126 156"
@@ -3717,10 +3738,17 @@
                     <stop offset="0.993" stop-color="#D2E2EF" />
                   </radialGradient>
                 </defs>
-              </svg>
+              </svg> -->
             </span>
-            <span class="absolute -top-8 -right-14 -z-1">
-              <svg
+            <span class=" relative top-8 -right-14 -z-1">
+              <div class="h-[30rem] w-full -mr-[80rem] -mt-[60rem]">
+                <img
+                src="src/images/spots.svg"
+                alt="image"
+                class="max-full w-full h-full"
+              />
+              </div>
+              <!-- <svg
                 width="161"
                 height="189"
                 viewBox="0 0 161 189"
@@ -3922,7 +3950,7 @@
                     <stop offset="0.993" stop-color="#F1C6EF" />
                   </radialGradient>
                 </defs>
-              </svg>
+              </svg> -->
             </span>
           </div>
         </div>
@@ -3933,7 +3961,7 @@
     <!-- ===== Footer start ===== -->
     <footer id="footer">
       <div
-        class="bg-gradient-1 relative dark:bg-black z-10 pt-[100px] pb-[52px] wow fadeInUp"
+        class="bg-gradient-1 relative dark:bg-black z-10 pt-[100px] pb-[52px] wow fadeInUp overflow-hidden"
         data-wow-delay=".2s"
       >
       <div class="container">
@@ -4063,6 +4091,14 @@
                       Pricing
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="font-semibold text-base text-body-color hover:text-primary inline-block"
+                    >
+                      Privacy Policy
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div class="w-full sm:w-1/2 lg:w-6/12 mb-12">
@@ -4080,7 +4116,7 @@
                   </li>
                   <li>
                     <a
-                      href="javascript:void(0)"
+                      href="https://calendly.com/marc-gulliver100"
                       class="font-semibold text-base text-body-color hover:text-primary inline-block"
                     >
                       Book a Demo
@@ -4283,9 +4319,9 @@
           </div>
         </div> -->
 
-        <div>
-          <span class="absolute left-0 bottom-0 -z-1">
-            <svg
+        <div class="realtive overflow-hidden z-40">
+          <span class="absolute -left-40 bottom-0 -z-1">
+            <!-- <svg
               width="142"
               height="73"
               viewBox="0 0 142 73"
@@ -4417,10 +4453,20 @@
                   <stop offset="0.993" stop-color="#F1C6EF" />
                 </radialGradient>
               </defs>
-            </svg>
+            </svg> -->
+            <img
+                src="src/images/spots.svg"
+                alt="image"
+                class="max-full w-full h-full"
+              />
           </span>
-          <span class="absolute right-0 top-0 -z-1">
-            <svg
+          <span class="absolute -right-20 top-0 -z-1">
+            <img
+                src="src/images/spots.svg"
+                alt="image"
+                class="max-full w-full h-full"
+              />
+            <!-- <svg
               width="120"
               height="75"
               viewBox="0 0 120 75"
@@ -4545,7 +4591,7 @@
                   <stop offset="0.993" stop-color="#D2E2EF" />
                 </radialGradient>
               </defs>
-            </svg>
+            </svg> -->
           </span>
         </div>
       </div>
