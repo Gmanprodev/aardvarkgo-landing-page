@@ -1015,14 +1015,14 @@ video {
 .w-4 {
   width: 1rem;
 }
-.w-40 {
-  width: 10rem;
+.w-32 {
+  width: 8rem;
 }
 .w-1\/2 {
   width: 50%;
 }
-.w-32 {
-  width: 8rem;
+.w-40 {
+  width: 10rem;
 }
 .w-\[38px\] {
   width: 38px;
@@ -1914,6 +1914,10 @@ video {
     height: 2.5rem;
   }
 
+  .md\:h-2\/3 {
+    height: 66.666667%;
+  }
+
   .md\:h-\[570px\] {
     height: 570px;
   }
@@ -1936,6 +1940,10 @@ video {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-3\/4 {
+    width: 75%;
   }
 
   .md\:flex-row {
